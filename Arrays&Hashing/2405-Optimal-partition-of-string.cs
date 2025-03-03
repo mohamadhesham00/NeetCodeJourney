@@ -21,3 +21,23 @@ public class Solution {
         return result.Count();
     }
 }
+
+// Better solution 
+public class Solution {
+    public int PartitionString(string s) {
+        HashSet<char> uniqueChars = new();
+        int result = 0;
+        for (int i = 0; i < s.Length; i++){
+            if(uniqueChars.Contains(s[i])){
+                result++;
+                uniqueChars.Clear();
+            }
+            uniqueChars.Add(s[i]);
+            // This is for handling the last character
+            if (i == s.Length - 1){
+                result++;
+            }
+        }
+        return result;
+    }
+}
