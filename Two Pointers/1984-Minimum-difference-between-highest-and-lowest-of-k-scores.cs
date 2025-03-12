@@ -3,15 +3,9 @@ public class Solution {
         Array.Sort(nums);
         int result = int.MaxValue;
         for (int i = 0; i < nums.Length - k + 1; i++){
-            int temp = 0;
-            int mx = -1;
-            int mn = int.MaxValue;
-            for(int j = i; j < i + k; j++){
-                mx = Math.Max(mx, nums[j]);
-                mn = Math.Min(mn, nums[j]);
-            }
-            temp += (mx - mn);
-            result = Math.Min(temp, result);
+            int mx = nums[i + k - 1];
+            int mn = nums[i];
+            result = Math.Min(mx - mn, result);
         }
         return result;
     }
